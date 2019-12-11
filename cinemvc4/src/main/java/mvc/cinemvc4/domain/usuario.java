@@ -5,15 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="usuarios") 
 public class usuario {
 
-	@Id
-    @Column(name = "usuario")
 	private String usuario;
 	
-    @Column(name = "password")
 	private String password;
 	
 	public usuario(String usuario, String password) {

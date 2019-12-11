@@ -18,7 +18,7 @@ public interface BBDDDAO {
 
 	public void insertarPelicula(String director, String titulo,String fecha, int id) throws ClassNotFoundException, SQLException;
 
-	public void modificarPelicula(int id, String director,String titulo, String fecha) throws ClassNotFoundException, SQLException;
+	public void modificarPelicula(String director,String titulo, String fecha,int id) throws ClassNotFoundException, SQLException;
 
 	public void borrarPelicula(int id) throws ClassNotFoundException, SQLException;
 

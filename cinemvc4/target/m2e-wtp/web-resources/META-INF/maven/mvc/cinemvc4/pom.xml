@@ -9,7 +9,7 @@
   <name>cinemvc4 Maven Webapp</name>
   <url>http://maven.apache.org</url>
 	<build>
-		<finalName>springapp</finalName>
+		<finalName>cinemvc4</finalName>
 	</build>
 	<properties>
 		<org.springframework.version>4.2.5.RELEASE</org.springframework.version>

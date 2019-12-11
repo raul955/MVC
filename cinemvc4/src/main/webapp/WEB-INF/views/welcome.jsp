@@ -11,16 +11,19 @@
 
 </br></br>
 
-<form method="post" action="controller">
+<form method="post" action="welcome">
 <input type="submit" value="Mantenimiento">
 <input name="action" value="mantenimientojsp" style="visibility: hidden; display: none;">
 </form>
 
 
+<a href="http://localhost:8080/springapp/filmografia/newUser">
+<input type="button" value="newUser"></br></br>
+</a>
 
-<a href="newUser.jsp"><input type="submit" value="Nuevo Usuario"></a></br></br>
-
-<a href="login.jsp"><input type="submit" value="Volver" /></a>
+<a href="http://localhost:8080/springapp/filmografia/login">
+<input type="button" value="Volver" />
+</a>
 
 
 </body>

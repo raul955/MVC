@@ -7,7 +7,7 @@
 </head>
 <body>
 <h2>Borrar Película</h2>
-<form method="POST" action="controller">
+<form method="POST" action="borrarPelicula2">
 
 ID: <input type="text" name="id"/></br></br>
 <p>----------------------------</p>
@@ -19,6 +19,8 @@ ID: <input type="text" name="id"/></br></br>
 <p>${men }</p>
 
 
-<a href="mantenimiento.jsp"><input type="submit" value="Volver" /></a>
+<a href="http://localhost:8080/springapp/filmografia/welcome">
+<input type="button" value="Volver" />
+</a>
 </body>
 </html>

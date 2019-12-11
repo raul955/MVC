@@ -8,20 +8,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Embeddable
-@Table(name="cine") 
 public class pelicula {
 
-    @Column(name = "nombre")
 	private String nombre;
 	
-    @Column(name = "director")
 	private String director;
 	
-    @Column(name = "fecha")
 	private String fecha;
 	
-    @Column(name = "id")
 	private int id;
 	
 	public pelicula(String nombre, String director, String fecha, int id) {

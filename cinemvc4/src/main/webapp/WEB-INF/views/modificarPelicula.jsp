@@ -8,7 +8,7 @@
 <body>
 <h2>Modificar Película</h2>
 
-<form method="POST" action="controller">
+<form method="POST" action="modificarPelicula2">
 
 ID: <input type="text" name="id"/></br></br>
 <p>----------------------------</p>
@@ -22,6 +22,6 @@ Fecha: <input type="text" name="fecha"/> Formato DAY-MONTH-YEAR</br></br>
 </form>
 <p>${men }</p>
 
-<a href="mantenimiento.jsp"><input type="submit" value="Volver" /></a>
+<a href="http://localhost:8080/springapp/filmografia/welcome"><input type="button" value="Volver" /></a>
 </body>
 </html>

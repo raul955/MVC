@@ -37,7 +37,7 @@ public class iController {
 	ResultSet rs;
 	int result;
 	String forName = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@192.168.205.57:1521:xe";
+	String url = "jdbc:oracle:thin:@192.168.0.16:1521:xe";
 	String user = "cine";
 	String pass = "cine";
 	String pagina=null;
@@ -45,12 +45,20 @@ public class iController {
     protected final Log logger = LogFactory.getLog(getClass());
 
 
-    @RequestMapping(value="/hello")
+    @RequestMapping(method=RequestMethod.GET,value="/hello")
     public ModelAndView index(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     		
         return new ModelAndView("index");
     }
+    
+    @RequestMapping(method=RequestMethod.GET,value="/index")
+    public ModelAndView indexx(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    		
+        return new ModelAndView("index");
+    }
+    
     
     @RequestMapping(method=RequestMethod.GET, value="/informacion")
     public ModelAndView info(HttpServletRequest request, HttpServletResponse response)
@@ -66,12 +74,53 @@ public class iController {
         return new ModelAndView("consultaDir");
     }
     
-    @RequestMapping(method=RequestMethod.GET, value="/login")
-    public ModelAndView login(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-    		
-        return new ModelAndView("login");
-    }
+    @RequestMapping(method = RequestMethod.GET, value = "/login")
+	public ModelAndView login(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		return new ModelAndView("login");
+
+	}
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/newUser")
+	public ModelAndView newUser(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		return new ModelAndView("newUser");
+
+	}
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/nuevaPelicula")
+	public ModelAndView nuevaPelicula(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		return new ModelAndView("nuevaPelicula");
+
+	}
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/modificarPelicula")
+	public ModelAndView modificarPelicula(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		return new ModelAndView("modificarPelicula");
+
+	}
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/borrarPelicula")
+	public ModelAndView borrarPelicula(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		return new ModelAndView("borrarPelicula");
+
+	}
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/welcome")
+	public ModelAndView welcome(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		return new ModelAndView("welcome");
+
+	}
     
     @RequestMapping(method=RequestMethod.GET, value="/salir")
     public ModelAndView salir(HttpServletRequest request, HttpServletResponse response)
@@ -113,6 +162,156 @@ public class iController {
 		
 		
     }
+    
+    @RequestMapping(method=RequestMethod.POST, value="/welcome")
+    public ModelAndView welcome(HttpServletRequest request) throws ServletException, IOException {
+
+		try {
+
+			List<pelicula> pel = BBDD.mostrarTodo();
+
+			request.setAttribute("listaPel", pel);		
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return new ModelAndView("mantenimiento");
+		
+    }
+    
+    @RequestMapping(method=RequestMethod.POST, value="/nuevaPelicula2")
+    public ModelAndView nuevaPelicula2(HttpServletRequest request) throws ServletException, IOException {
+
+		String director = request.getParameter("director");
+		String titulo = request.getParameter("titulo");
+		String fecha = request.getParameter("fecha");
+		int id = Integer.parseInt(request.getParameter("id"));
+
+		try {
+
+			BBDD.insertarPelicula(director, titulo,fecha, id);
+
+			String mensaje = "Película insertada";
+
+			request.setAttribute("men", mensaje);
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		
+		return new ModelAndView("nuevaPelicula");
+		
+    }
+    
+    @RequestMapping(method=RequestMethod.POST, value="/modificarPelicula2")
+    public ModelAndView modificarPelicula2(HttpServletRequest request) throws ServletException, IOException {
+
+    	int id = Integer.parseInt(request.getParameter("id"));
+		String director = request.getParameter("director");
+		String titulo = request.getParameter("titulo");
+		String fecha = request.getParameter("fecha");
+
+		try {
+
+			String mensaje = "Película modificada";
+
+			BBDD.modificarPelicula(director,titulo,fecha,id);
+
+			request.setAttribute("men", mensaje);
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return new ModelAndView("modificarPelicula");
+		
+    }
+    
+    @RequestMapping(method=RequestMethod.POST, value="/borrarPelicula2")
+    public ModelAndView borrarPelicula2(HttpServletRequest request) throws ServletException, IOException {
+
+    	int id = Integer.parseInt(request.getParameter("id"));
+
+		try {
+
+			String mensaje = "Película borrada";
+
+			BBDD.borrarPelicula(id);
+
+			request.setAttribute("men", mensaje);
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		
+		return new ModelAndView("borrarPelicula");
+		
+    }
+    
+    @RequestMapping(method=RequestMethod.POST, value="/alta")
+    public ModelAndView alta(HttpServletRequest request) throws ServletException, IOException {
+
+    	String usuario = request.getParameter("usuario");
+		String password = request.getParameter("password");
+
+		try {
+
+			String mensaje = "Usuario insertado";
+
+			BBDD.altaUsuario(usuario, password);
+
+			request.setAttribute("men", mensaje);
+
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		
+		return new ModelAndView("newUser");
+		
+    }
+    
+    @RequestMapping(method=RequestMethod.POST, value="/consultaDir")
+    public ModelAndView consultaDir(HttpServletRequest request) throws ServletException, IOException {
+
+    	String director = request.getParameter("director");
+
+		try {
+			List<pelicula> pel = BBDD.mostrarTablaPeliculas(director);
+			request.setAttribute("listaPel", pel);
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return new ModelAndView("consultaDir");
+		
+    }
+
     
     
 

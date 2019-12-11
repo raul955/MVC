@@ -21,7 +21,7 @@ public class BBDD implements BBDDDAO{
 	ResultSet rs;
 	int result;
 	String forName = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@192.168.205.57:1521:xe";
+	String url = "jdbc:oracle:thin:@192.168.0.16:1521:xe";
 	String user = "cine";
 	String pass = "cine";
 	ArrayList<String> directorr = new ArrayList<String>();
@@ -124,7 +124,7 @@ public class BBDD implements BBDDDAO{
 
 	}
 
-	public void modificarPelicula(int id, String director,String titulo, String fecha) throws ClassNotFoundException, SQLException {
+	public void modificarPelicula(String director,String titulo, String fecha, int id) throws ClassNotFoundException, SQLException {
 
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 

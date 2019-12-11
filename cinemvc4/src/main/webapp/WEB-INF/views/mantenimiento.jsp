@@ -25,10 +25,20 @@
 			</c:forEach>
 	</table>
 	</br>
-	<a href="nuevaPelicula.jsp"><input type="submit" value="Nueva Película" /></a></br></br>
-	<a href="modificarPelicula.jsp"><input type="submit" value="Modificar Pelicula" /></a></br></br>
-	<a href="borrarPelicula.jsp"><input type="submit" value="Borrar Película" /></a></br></br>
-	<a href="welcome.jsp"><input type="submit" value="Volver" /></a></br></br>
-
+	<a href="http://localhost:8080/springapp/filmografia/nuevaPelicula">
+	<input type="button" value="nuevaPelicula" /></br></br>
+	</a>
+	
+	<a href="http://localhost:8080/springapp/filmografia/modificarPelicula">
+	<input type="button" value="modificarPelicula" /></br></br>
+	</a>
+	
+	<a href="http://localhost:8080/springapp/filmografia/borrarPelicula">
+	<input type="button" value="Borrar Película" /></br></br>
+	</a>
+	
+	<a href="http://localhost:8080/springapp/filmografia/welcome">
+	<input type="button" value="volver" /></br></br>
+	</a>
 </body>
 </html>

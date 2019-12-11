@@ -8,7 +8,7 @@
 <body>
 <h2>Nueva Película</h2>
 
-<form method="POST" action="controller">
+<form method="POST" action="nuevaPelicula2">
 
 Director: <input type="text" name="director"/></br></br>
 Titulo: <input type="text" name="titulo"/></br></br>
@@ -20,7 +20,8 @@ ID: <input type="text" name="id"/></br></br>
 </form>
 <p>${men }</p>
 
-
-<a href="mantenimiento.jsp"><input type="submit" value="Volver" /></a>
+<a href="http://localhost:8080/springapp/filmografia/welcome">
+<input type="button" value="Volver" />
+</a>
 </body>
 </html>

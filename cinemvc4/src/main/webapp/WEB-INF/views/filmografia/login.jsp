@@ -4,7 +4,7 @@
 <html>
 <body>
 	<h2 align="center">Login</h2>
-	<form method="POST" action="http://localhost:8080/cinemvc4/filmografia/login">
+	<form method="POST" action="login">
 		</br> </br>
 		<div align="center">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Usuario: <input type="text"
@@ -24,7 +24,9 @@
 	</table>
 	
 	<div align="center">
-		<a href="index.jsp"><input type="submit" value="Inicio" /></a>
+		<a href="http://localhost:8080/springapp/filmografia/index">
+		<input type="button" value="Inicio" />
+		</a>
 	</div>
 </body>
 </html>
